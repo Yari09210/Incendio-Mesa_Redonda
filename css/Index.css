@@ -1,58 +1,221 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
 
 :root{
-    --orange: rgb(71, 71, 221);
+    --accent: #b04747; /* rojo quemado serio */
 }
 
 *{
     margin: 0; padding: 0;
     box-sizing: border-box;
-    outline: none; border: none;
     text-decoration: none;
-    transition: all .2s linear;
+    font-family: 'Nunito', sans-serif;
 }
 
-*::selection{
-    background: var(--orange);
-    color:#fff;
-}
-
-html{
-    font-size: 62.5%;
-    overflow-x: hidden;
-    scroll-padding-top: 6rem;
-    scroll-behavior: smooth;
-}
+/* ================= HEADER ================= */
 
 header{
     position: fixed;
     top:0; left: 0; right: 0;
-    background: #333;
     z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 2rem 9%;
+    padding: 1.2rem 8%;
+
+    /* fondo oscuro rojizo muy suave */
+    background: linear-gradient(135deg, #111 0%, #1b0f0f 100%);
+
+    /* sombra roja suave */
+    box-shadow: 0 3px 18px rgba(176, 71, 71, 0.15);
+
+    border-bottom: 1px solid rgba(176, 71, 71, 0.5);
 }
 
 header .logo{
-    font-size: 2.5rem;
-    font-weight: bolder;
+    font-size: 1.8rem;
+    font-weight: 700;
     color:#fff;
-    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-header .logo span{
-    color:var(--orange);
+header .navbar{
+    display: flex;
+    gap: 1.5rem;
 }
 
 header .navbar a{
     color: #fff;
-    font-size: 2rem;
-    margin:0 .8rem;
+    font-size: 1.4rem; 
+    position: relative;
+}
+
+header .navbar a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(to right, #b04747, #e08d8d);
+    transition: 0.3s;
+}
+
+header .navbar a:hover::after{
+    width: 100%;
 }
 
 header .navbar a:hover{
-    color: var(--orange);
-    border-bottom: 2px solid var(--orange);
+    color: #f2d3d3;
+    text-shadow: 0 0 6px rgba(176, 71, 71, 0.5);
+}
+
+/* ======= MENÚ RESPONSIVE ======= */
+
+.menu-btn{
+    display: none;
+    font-size: 2.3rem; 
+    color: #fff;
+    cursor: pointer;
+}
+
+@media(max-width: 768px){
+
+    .menu-btn{
+        display: block;
+    }
+
+    header .navbar{
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: #121212;
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        padding: .8rem 0;
+        display: none;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+    }
+
+    header .navbar a{
+        padding: .8rem 0;
+        font-size: 1.6rem; 
+    }
+
+    .navbar.active{
+        display: flex;
+    }
+}
+
+
+/* ================= FOOTER ================= */
+
+.footer{
+    padding: 2.5rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    /* Fondo oscuro más uniforme */
+    background: linear-gradient(180deg, #111 0%, #160b0b 60%, #0d0d0d 100%);
+    
+    /* Borde rojo quemado */
+    border-top: 2px solid rgba(176, 71, 71, 0.6);
+
+    /* Glow suave */
+    box-shadow: 0 -6px 25px rgba(176, 71, 71, 0.18);
+}
+
+/* Luz suave al fondo estilo cine */
+.footer::after{
+    content: "";
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: radial-gradient(circle, rgba(176,71,71,0.25), transparent);
+    filter: blur(25px);
+}
+
+/* Título */
+.footer-content h3{
+    font-size: 1.55rem;
+    color: #f4dada;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: .6rem;
+}
+
+/* Subtítulo */
+.footer-content p{
+    font-size: 1.15rem;
+    color: #e6c4c4;
+    margin-bottom: .7rem;
+}
+
+/* Nueva línea doble con brillo */
+.footer-line{
+    width: 160px;
+    height: 3px;
+    margin: 1.2rem auto;
+    border-radius: 3px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        #b04747,
+        #e08d8d,
+        #b04747,
+        transparent
+    );
+    box-shadow: 0 0 10px rgba(176, 71, 71, 0.4);
+}
+
+/* Segunda línea más fina */
+.footer-line-secondary{
+    width: 100px;
+    height: 1px;
+    margin: -5px auto 1rem auto;
+    background: rgba(176,71,71,0.5);
+}
+
+/* Copyright */
+.footer .copy{
+    font-size: 1rem;
+    color: #d6b9b9;
+    opacity: 0.85;
+    margin-top: 1rem;
+}
+
+/* Texto extra cinematográfico */
+.footer-extra{
+    font-size: 0.85rem;
+    color: #bfa3a3;
+    opacity: 0.65;
+    margin-top: .5rem;
+    letter-spacing: 1px;
+}
+
+/* Responsive */
+@media(max-width: 600px){
+    .footer{
+        padding: 2rem .8rem;
+    }
+
+    .footer-content h3{
+        font-size: 1.35rem;
+    }
+
+    .footer-content p{
+        font-size: 1.05rem;
+    }
+
+    .footer-line{
+        width: 120px;
+    }
+
+    .footer-line-secondary{
+        width: 80px;
+    }
 }
