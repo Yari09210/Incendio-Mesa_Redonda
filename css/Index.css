@@ -54,4 +54,5 @@ header .navbar a{
 
 header .navbar a:hover{
     color: var(--orange);
+    border-bottom: 2px solid var(--orange);
 }
